@@ -46,10 +46,6 @@ class BaseConfig:
         return self.RUN_DIR / "results"
 
     @property
-    def FIGURE_DIR(self):
-        return self.RESULT_DIR / "figures"
-
-    @property
     def MODEL_SAVE_PATH(self):
         return self.SAVE_MODEL_DIR / self.BEST_MODEL_FILENAME
 

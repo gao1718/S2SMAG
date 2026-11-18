@@ -357,7 +357,7 @@ df_time_trg = pd.DataFrame({
 # ==========================
 # 9. 保存所有结果
 # ==========================
-print("保存用于画图的数据...")
+print("保存 SHAP 分析结果...")
 
 # 9.1 保存原始SHAP值
 shap_src_path = os.path.join(shap_save_root, "shap_values_encoder_multi_step.npy")

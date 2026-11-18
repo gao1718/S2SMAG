@@ -16,7 +16,6 @@ days and a given 10-day vacuum sequence to predict 10 days of settlement.
 | [`original_data/`](original_data) | Public workbooks, variable definitions, and window preparation |
 | [`model/S2SMAG/`](model/S2SMAG) | Network, configuration, training, and test commands |
 | [`model/TraditionalCurves/`](model/TraditionalCurves) | C1 comparisons, native recursive forecasts, and error analysis |
-| [`drawing/`](drawing) | Loss visualization from recorded training data |
 | [`reference_results/`](reference_results) | Original loss and C1 prediction CSVs from the 1,000-epoch run |
 | [`legacy/`](legacy) | Original repository scripts retained for reference |
 
@@ -65,8 +64,7 @@ version control. Hardware and PyTorch builds can yield small numerical differenc
 ## Analyze prediction errors and compare with traditional curves
 
 ```sh
-python -m model.TraditionalCurves.reproduce --data-dir original_data/processed/c1_c9 --checkpoint runs/c1_c9/checkpoint_best.pt --output runs/c1_c9_analysis --device auto --plots
-python -m drawing.plot_training_history --history reference_results/training_history.csv --output runs/c1_c9_analysis/loss_history.svg
+python -m model.TraditionalCurves.reproduce --data-dir original_data/processed/c1_c9 --checkpoint runs/c1_c9/checkpoint_best.pt --output runs/c1_c9_analysis --device auto
 ```
 
 The analysis uses all 1,240 C1 window–lead pairs to summarize signed errors by

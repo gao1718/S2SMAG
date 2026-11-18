@@ -3,7 +3,7 @@
 参考gnn_simulation_code/model/comparison_runtime.py的依赖注入方式：
 每个模型显式传入自己的cfg、build_model和损失函数，本模块不通过全局
 注册表猜测架构。训练只加载训练文件，测试只加载测试文件；模型目录
-拥有自己的实验配置、save_model、results和plotting_scripts。
+拥有自己的实验配置、save_model 和 results。
 """
 from __future__ import annotations
 

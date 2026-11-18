@@ -9,7 +9,6 @@ def configure_environment() -> None:
     cache_root = Path(__file__).resolve().parent / ".cache"
     for variable, directory in (
         ("PYTHONPYCACHEPREFIX", "python"),
-        ("MPLCONFIGDIR", "matplotlib"),
         ("TORCH_HOME", "torch"),
         ("CUDA_CACHE_PATH", "cuda"),
     ):

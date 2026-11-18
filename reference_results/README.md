@@ -21,4 +21,4 @@ The `actual` values are the inverse-transformed numerical targets used in the or
 
 Use C9 to select a checkpoint. The fixed endpoint is included to document the
 training run. Both files use the measured C1 vacuum during the forecast window as a
-given input. The CSV files can be inspected and plotted directly.
+given input.

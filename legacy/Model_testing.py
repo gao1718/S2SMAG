@@ -3,12 +3,7 @@ import os
 import Data_handing
 import torch.nn as nn
 import numpy as np
-import matplotlib.pyplot as plt
 import seq2seq_attention
-
-# 取消中文字体设置，默认使用英文字体
-plt.rcParams["axes.unicode_minus"] = False  # 解决负号显示问题
-plt.rcParams['font.size'] = 10  # 基础字体大小
 
 # -------------------------- 1. 数据准备与模型初始化 --------------------------
 target = 0

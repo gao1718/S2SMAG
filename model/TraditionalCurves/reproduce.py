@@ -218,7 +218,6 @@ def main():
     parser.add_argument("--device", choices=("auto", "cpu", "cuda"), default="auto")
     parser.add_argument("--archived-predictions", type=Path,
                         help="Optional original C1 prediction CSV, checked against the checkpoint")
-    parser.add_argument("--plots", action="store_true", help="Export SVG and PNG figures")
     args = parser.parse_args()
     if args.output.exists() and any(args.output.iterdir()):
         parser.error("Use an empty output directory to keep previous runs intact.")
@@ -279,10 +278,6 @@ def main():
         "phase_counts": windows.phase.value_counts(sort=False).to_dict(),
         "error_quantiles": "Empirical distribution of errors over overlapping windows.",
     })
-    if args.plots:
-        from model.TraditionalCurves.reproduction_plots import save_plots
-
-        save_plots(args.output, observations, comparisons, windows)
     print(f"C1 analysis complete: {args.output.resolve()}")
 
 

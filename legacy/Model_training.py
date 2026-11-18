@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 import seq2seq_attention
-import matplotlib.pyplot as plt
 import pandas as pd
 import os
 import time
@@ -15,16 +14,6 @@ from Lookahead_optimizer import Lookahead
 # ----------------------------
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f"使用设备: {device}")
-
-# 图表字体设置
-plt.rcParams.update({
-    'font.family': 'Times New Roman',
-    'axes.unicode_minus': False,
-    'font.size': 10,
-    'axes.labelsize': 12,
-    'axes.titlesize': 14,
-    'legend.fontsize': 10
-})
 
 # 保存路径
 save_root = r'G:'
@@ -166,33 +155,6 @@ print(f"\n训练完成！总耗时: {training_time/3600:.2f} 小时")
 print(f"历史最优模型位于第 {best_epoch} 轮，损失: {best_loss:.7f}")
 print(f"指定轮次模型已保存：{save_epochs} 轮")
 
-
-# ----------------------------
-# 损失曲线与数据保存
-# ----------------------------
-plt.figure(figsize=(10, 6))
-plt.plot(range(1, num_epochs+1), train_losses, color='blue', linewidth=1.5, label='Training Loss')
-# 标记最优模型和指定保存轮次
-plt.scatter(best_epoch, best_loss, color='red', s=80, marker='*', label=f'Best Epoch ({best_epoch})')
-for epoch in save_epochs:
-    if epoch <= num_epochs:
-        loss_at_epoch = train_losses[epoch-1]
-        plt.scatter(epoch, loss_at_epoch, color='green', s=60, marker='s', label=f'Timed Save ({epoch})')
-plt.xlabel('Epoch')
-plt.ylabel('MSE Loss')
-plt.title('Training Loss Curve')
-plt.legend(loc='upper right')
-plt.grid(True, linestyle='--', alpha=0.3)
-plt.xlim(0, num_epochs)
-plt.ylim(0, max(train_losses) * 1.1)
-
-# 保存损失曲线
-loss_fig_png = os.path.join(save_root, 'training_loss_curve.png')
-loss_fig_pdf = os.path.join(save_root, 'training_loss_curve.pdf')
-plt.tight_layout()
-plt.savefig(loss_fig_png, dpi=300, bbox_inches='tight')
-plt.savefig(loss_fig_pdf, dpi=300, bbox_inches='tight')
-plt.show()
 
 # 保存损失数据
 loss_data = pd.DataFrame({
