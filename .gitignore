@@ -1,0 +1,38 @@
+# Local Python environments and caches
+.venv/
+.cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.vscode/
+.idea/
+.env
+
+# Generated data and experiment outputs
+/original_data/processed/
+/runs/
+/outputs/
+/codex_chat/
+**/experiments/
+**/smoke/
+**/save_model/
+**/checkpoints/
+
+# Trained weights, serialized models, and generated array archives
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.keras
+*.npz
+*.npy
+
+# Local editor, operating system, and Office files
+.DS_Store
+Thumbs.db
+~$*
